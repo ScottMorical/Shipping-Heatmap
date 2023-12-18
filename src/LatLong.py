@@ -1,6 +1,6 @@
 import openpyxl, requests, folium, sys
 
-excel = openpyxl.load_workbook("C:\\Users\\Scott\\Documents\\TestData.xlsx")
+excel = openpyxl.load_workbook("C:\\Users\\Scott\\Documents\\StartingData.xlsx")
 sheet = excel.active
 
 CityState = {}
@@ -19,7 +19,7 @@ for cell in range(2,sheet.max_row+1):
 p = open('C:\\Users\\Scott\\Documents\\apikey.txt', "r")
 api_key = p.read()
 
-excel.save("C:\\Users\\Scott\\Documents\\TestData.xlsx")
+excel.save("C:\\Users\\Scott\\Documents\\StartingData.xlsx")
 excel.close()
 
 # Write next gathered information to new workbook
@@ -52,7 +52,7 @@ for cell in range(2,sheet.max_row+1):
     sheet["G"+str(cell)].value = LatLong[1]
     
 
-workbook.save("C:\\Users\\Scott\\Documents\\DistanceInfo.xlsx")
+workbook.save("C:\\Users\\Scott\\Documents\\LocationOutput.xlsx")
 workbook.close()
 
 # Define functions to give values to map based on percentile total gallons or shipments each city received
@@ -86,7 +86,7 @@ my_map4 = folium.Map(location = [32.5251516, -93.7501789], tiles="Cartodb Positr
 folium.Marker([32.5251516, -93.7501789], 
 			tooltip = 'Shreveport').add_to(my_map4) 
 sys.setrecursionlimit(10000000)
-excel = openpyxl.load_workbook("C:\\Users\\Scott\\Documents\\DistanceInfo.xlsx")
+excel = openpyxl.load_workbook("C:\\Users\\Scott\\Documents\\LocationOutput.xlsx")
 sheet = excel.active
 lat = []
 long = []
